@@ -24,7 +24,7 @@ jobs:
         export CC=arm-linux-gnueabihf-gcc
         export CXX=arm-linux-gnueabihf-g++
         export AR=arm-linux-gnueabihf-ar
-        make platform=unix-armv7-hardfloat-neon
+        make platform=unix-armv7-hardfloat-neon HAVE_NEON=1 fpic=-fPIC SHARED=-shared
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

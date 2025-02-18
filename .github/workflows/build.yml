@@ -1,0 +1,30 @@
+name: Build gpsp
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+
+    - name: Build
+      run: |
+        make platform=unix-armv7-hardfloat-neon
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: gpsp-libretro
+        path: gpsp_libretro.so

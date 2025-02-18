@@ -21,6 +21,9 @@ jobs:
 
     - name: Build
       run: |
+        export CC=arm-linux-gnueabihf-gcc
+        export CXX=arm-linux-gnueabihf-g++
+        export AR=arm-linux-gnueabihf-ar
         make platform=unix-armv7-hardfloat-neon
 
     - name: Upload artifacts

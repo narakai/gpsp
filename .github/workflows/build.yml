@@ -24,7 +24,7 @@ jobs:
         make platform=unix-armv7-hardfloat-neon
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: gpsp-libretro
         path: gpsp_libretro.so

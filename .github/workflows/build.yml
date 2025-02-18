@@ -24,6 +24,10 @@ jobs:
         export CC=arm-linux-gnueabihf-gcc
         export CXX=arm-linux-gnueabihf-g++
         export AR=arm-linux-gnueabihf-ar
+        export CORTEX_A7=1
+        export ARM_HARDFLOAT=1
+        export CFLAGS="-mcpu=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard"
+        export CXXFLAGS="$CFLAGS"
         make platform=unix-armv7-hardfloat-neon HAVE_NEON=1 fpic=-fPIC SHARED=-shared
 
     - name: Upload artifacts
